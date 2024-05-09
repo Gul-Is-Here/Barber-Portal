@@ -1,7 +1,8 @@
+import 'package:barber_portal/screens/Home_Screen/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:barber_portal/const/color.dart';
-import 'package:barber_portal/home_screen.dart';
+import 'package:barber_portal/screens/Home_Screen/home_screen.dart';
 import 'package:flutter/widgets.dart';
 
 import 'password_rest_screen.dart';
@@ -104,8 +105,7 @@ class AnimatedLoginScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
+                        MaterialPageRoute(builder: (context) => Home()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

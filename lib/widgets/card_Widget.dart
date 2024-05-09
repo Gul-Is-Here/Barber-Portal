@@ -24,7 +24,7 @@ class CustomizedCardWidget extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
     print('Width : $screenWidth');
     print('Height : $screenHeight');
-    final double containerWidth = screenWidth < 400 ? 150 : screenWidth * 0.40;
+    final double containerWidth = screenWidth < 450 ? 1500 : screenWidth * 0.40;
     final double containerHeight =
         screenHeight < 800 ? 200 : screenHeight * .300;
 
@@ -33,8 +33,8 @@ class CustomizedCardWidget extends StatelessWidget {
       child: Card(
         color: Colors.white,
         child: SizedBox(
-          width: screenWidth < 400 ? screenWidth * .3 : screenWidth * .24,
-          height: screenHeight < 800 ? screenHeight * .23 : screenHeight * .3,
+          width: screenWidth < 450 ? screenWidth * .25 : screenWidth * .24,
+          height: screenHeight < 900 ? screenHeight * .23 : screenHeight * .3,
           child: Stack(
             children: [
               if (num != null && color != null)
@@ -42,14 +42,14 @@ class CustomizedCardWidget extends StatelessWidget {
                   top: 0,
                   right: 0,
                   child: Container(
-                    height: screenWidth < 400 || screenHeight < 800 ? 30 : 50,
-                    width: screenWidth < 400 || screenHeight < 800 ? 35 : 60,
+                    height: screenWidth < 450 || screenHeight < 900 ? 35 : 60,
+                    width: screenWidth < 450 || screenHeight < 900 ? 35 : 60,
                     color: color,
                     child: Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          screenWidth < 400 || screenHeight < 800
+                          screenWidth < 450 || screenHeight < 900
                               ? Text(
                                   '$num',
                                   style: const TextStyle(
@@ -66,7 +66,7 @@ class CustomizedCardWidget extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                          screenWidth < 400 || screenHeight < 800
+                          screenWidth < 450 || screenHeight < 900
                               ? const Text(
                                   "+",
                                   style: TextStyle(
@@ -88,7 +88,7 @@ class CustomizedCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-              screenWidth < 400 || screenHeight < 800
+              screenWidth < 450 || screenHeight < 900
                   ? Positioned(
                       top: 50,
                       left: 0,
@@ -111,7 +111,7 @@ class CustomizedCardWidget extends StatelessWidget {
                             size: 100,
                             color: greenColor,
                           ))),
-              screenWidth < 400 || screenHeight < 800
+              screenWidth < 450 || screenHeight < 900
                   ? Positioned(
                       top: 150,
                       left: 0,

@@ -7,7 +7,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../model/data.dart';
 import '../model/order_model.dart';
-import '../screens/Booking_Screen/view_booking_screen.dart';
+import '../screens/Booking_Screen/booking_detail_screen.dart';
 
 class PaginatedTableWidget extends StatelessWidget {
   const PaginatedTableWidget({Key? key}) : super(key: key);
@@ -17,64 +17,124 @@ class PaginatedTableWidget extends StatelessWidget {
     final controller = Get.put(BookingController());
     final DataTableSource mydata =
         Paginated(controller.bookingData as List<OrderData>, context);
-    return Theme(
-      data: Theme.of(context).copyWith(
-        dataTableTheme: DataTableThemeData(
-          dataRowColor: MaterialStateColor.resolveWith(
-              (states) => Colors.white), // Change the row color
-          headingRowColor: MaterialStateColor.resolveWith(
-              (states) => darkBlueColor), // Change the heading row color
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text('Booking Screeen'),
       ),
-      child: SingleChildScrollView(
-        child: PaginatedDataTable(
-          columns: [
-            DataColumn(
-              label: Text(
-                'Order',
-                style: Theme.of(context).textTheme.headline6,
+      body: Theme(
+        data: Theme.of(context).copyWith(
+          dataTableTheme: DataTableThemeData(
+            dataRowColor: MaterialStateColor.resolveWith(
+                (states) => Colors.white), // Change the row color
+            headingRowColor: MaterialStateColor.resolveWith(
+                (states) => darkBlueColor), // Change the heading row color
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: PaginatedDataTable(
+            columns: [
+              DataColumn(
+                label: Text(
+                  'Order',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            DataColumn(
-              label:
-                  Text('Status', style: Theme.of(context).textTheme.headline6),
-            ),
-            DataColumn(
-              label: Text('Customer',
-                  style: Theme.of(context).textTheme.headline6),
-            ),
-            DataColumn(
-              label:
-                  Text('Phone', style: Theme.of(context).textTheme.headline6),
-            ),
-            DataColumn(
-              label:
-                  Text('Email', style: Theme.of(context).textTheme.headline6),
-            ),
-            DataColumn(
-              label: Text('Appointment Date & Time',
-                  style: Theme.of(context).textTheme.headline6),
-            ),
-            DataColumn(
-              label:
-                  Text('Price', style: Theme.of(context).textTheme.headline6),
-            ),
-            DataColumn(
-              label: Align(
-                child: Text('Action',
-                    style: Theme.of(context).textTheme.headline6),
+              DataColumn(
+                label: Text(
+                  'Status',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-            )
-          ],
-          source: mydata,
-          dataRowHeight: 80,
-          columnSpacing: 30,
-          horizontalMargin: 40,
-          showFirstLastButtons: true,
-          rowsPerPage: 10,
-          sortAscending: true,
-          arrowHeadColor: darkBlueColor,
-          showEmptyRows: false,
+              DataColumn(
+                label: Text(
+                  'Customer',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Phone',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Email',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Appointment Date & Time',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Price',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: GoogleFonts.cormorant().fontFamily,
+                      fontSize: 20,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Align(
+                  child: Text(
+                    'Action',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: GoogleFonts.cormorant().fontFamily,
+                        fontSize: 20,
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
+            source: mydata,
+            dataRowHeight: 80,
+            columnSpacing: 30,
+            horizontalMargin: 40,
+            showFirstLastButtons: true,
+            rowsPerPage: 10,
+            sortAscending: true,
+            arrowHeadColor: darkBlueColor,
+            showEmptyRows: false,
+          ),
         ),
       ),
     );
@@ -90,7 +150,7 @@ class Paginated extends DataTableSource {
 
   @override
   DataRow? getRow(int index) {
-    final order = bookingData[index];
+    var order = bookingData[index];
 
     return DataRow(cells: [
       DataCell(Text(
@@ -358,7 +418,7 @@ class Paginated extends DataTableSource {
               ),
               onPressed: () {
                 Get.to(() => BookingDetailScreen(
-                      bookingData: order,
+                      bookingData: orderBooking,
                       index: index,
                     ));
               },

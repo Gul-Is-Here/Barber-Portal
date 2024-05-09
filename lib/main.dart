@@ -59,42 +59,46 @@ class MyApp extends StatelessWidget {
               titleSmall:
                   GoogleFonts.lato(fontSize: 14, color: darkBlueColor))),
       theme: ThemeData().copyWith(
-          appBarTheme: const AppBarTheme(
-              titleTextStyle: TextStyle(fontSize: 18),
-              backgroundColor: greenColor,
-              foregroundColor: Colors.white),
-          cardTheme: const CardTheme().copyWith(
-            color: kColorScheme.primaryContainer,
-            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(fontSize: 18),
+            backgroundColor: greenColor,
+            foregroundColor: Colors.white),
+        cardTheme: const CardTheme().copyWith(
+          color: kColorScheme.primaryContainer,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              foregroundColor: kColorScheme.onPrimaryContainer,
+              backgroundColor: kColorScheme.primaryContainer,
+              textStyle: Theme.of(context).textTheme.bodyLarge),
+        ),
+        textTheme: const TextTheme().copyWith(
+          bodyLarge: GoogleFonts.poppins(
+              fontSize: 15,
+              color: kColorScheme.onPrimaryContainer,
+              fontWeight: FontWeight.bold),
+          bodyMedium: GoogleFonts.lato(
+              fontSize: 14,
+              color: kColorScheme.onPrimaryContainer,
+              fontWeight: FontWeight.bold),
+          bodySmall: GoogleFonts.lato(
+              fontSize: 13, color: darkBlueColor, fontWeight: FontWeight.bold),
+          titleMedium: GoogleFonts.lato(
+            fontSize: 14,
+            color: darkBlueColor,
+            fontWeight: FontWeight.bold,
           ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-                foregroundColor: kColorScheme.onPrimaryContainer,
-                backgroundColor: kColorScheme.primaryContainer,
-                textStyle: Theme.of(context).textTheme.bodyLarge),
+          titleSmall: GoogleFonts.lato(
+            fontSize: 12,
+            color: darkBlueColor,
           ),
-          textTheme: const TextTheme().copyWith(
-              bodyLarge: GoogleFonts.poppins(
-                  fontSize: 15,
-                  color: kColorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.bold),
-              bodyMedium: GoogleFonts.lato(
-                  fontSize: 14,
-                  color: kColorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.bold),
-              bodySmall: GoogleFonts.lato(
-                  fontSize: 13,
-                  color: darkBlueColor,
-                  fontWeight: FontWeight.bold),
-              titleMedium: GoogleFonts.lato(
-                fontSize: 14,
-                color: darkBlueColor,
-                fontWeight: FontWeight.bold,
-              ),
-              titleSmall: GoogleFonts.lato(
-                fontSize: 12,
-                color: darkBlueColor,
-              ))),
+          titleLarge: GoogleFonts.lato(
+            fontSize: 18,
+            color: darkBlueColor,
+          ),
+        ),
+      ),
       home: SplashScreen(),
     );
   }

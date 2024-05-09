@@ -11,7 +11,7 @@ class SwiperWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return screenWidth < 400 || screenHeight < 800
+    return screenWidth < 450 || screenHeight < 900
         ? VxSwiper.builder(
             aspectRatio: 16 / 9,
             autoPlay: true,

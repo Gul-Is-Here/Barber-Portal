@@ -8,13 +8,13 @@ class ScheduleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    // final double cardWidth = screenWidth > 300 ? 250 : screenWidth * 0.8;
-    // final double cardHeight = screenHeight > 700 ? 200 : screenHeight * 0.5;
-    // final double iconSize = screenHeight < 600 ? 100 : screenWidth * 0.10;
+    final double cardWidth = screenWidth > 300 ? 250 : screenWidth * 0.8;
+    final double cardHeight = screenHeight > 700 ? 200 : screenHeight * 0.5;
+    final double iconSize = screenHeight < 600 ? 100 : screenWidth * 0.10;
 
     return SizedBox(
-      width: screenWidth < 400 ? screenWidth * .5 : screenWidth * .4,
-      height: screenHeight < 800 ? screenHeight * .23 : screenHeight * .3,
+      width: cardWidth,
+      height: cardHeight,
       child: Card(
         color: Colors.white,
         elevation: 4,
@@ -27,10 +27,10 @@ class ScheduleWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              screenWidth < 400 || screenHeight < 800
+              screenWidth < 450 || screenHeight < 900
                   ? IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.schedule,
                         size: 50,
                         color: greenColor,
@@ -38,19 +38,19 @@ class ScheduleWidget extends StatelessWidget {
                     )
                   : IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.schedule,
                         size: 80,
                         color: greenColor,
                       ),
                     ),
               const SizedBox(height: 10), // Adding some space
-              screenWidth < 400 || screenHeight < 800
-                  ? Text(
+              screenWidth < 450 || screenHeight < 900
+                  ? const Text(
                       'Schedule',
                       style: TextStyle(fontSize: 16, color: darkBlueColor),
                     )
-                  : Text(
+                  : const Text(
                       'Schedule',
                       style: TextStyle(fontSize: 25, color: darkBlueColor),
                     ),
