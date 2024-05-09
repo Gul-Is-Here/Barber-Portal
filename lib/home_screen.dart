@@ -1,3 +1,4 @@
+import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:barber_portal/const/color.dart';
 import 'package:barber_portal/widgets/card_Widget.dart';
@@ -63,7 +64,9 @@ class HomeScreen extends StatelessWidget {
                       title: 'Menu',
                     ),
                     CustomizedCardWidget(
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(() => BookingScreen());
+                        },
                         icon: Icons.book,
                         num: 5,
                         title: 'Bookings',

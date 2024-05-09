@@ -72,6 +72,7 @@ class AddMenuController extends GetxController {
   }
 
   deleteBooking(BookingItem bookingItem) {
+    // ignore: collection_methods_unrelated_type
     bookings.remove([bookingItem]);
   }
 }
