@@ -1,4 +1,5 @@
 import 'package:barber_portal/controller/booking_controller.dart';
+import 'package:barber_portal/model/booking_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,32 +13,32 @@ class BookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(BookingController());
-    final width = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     print('Booking  Item ;${controller.bookingData.length}');
 
     return Scaffold(
-      body: controller.bookingData.isEmpty
-          ? const Center(
-              child: Text('Appointment is Not Schedule'),
-            )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 20),
-                Expanded(
-                  child: LayoutBuilder(
-                    builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      if (constraints.maxWidth > 400) {
-                        // For larger screens, use paginated table widget
-                        return const PaginatedTableWidget();
-                      } else {
-                        // For smaller screens, use list view
-                        return ListView.builder(
-                          itemCount: controller.bookingData.length,
-                          itemBuilder: (context, index) {
-                            final booking = controller.bookingData[index];
-                            return Padding(
+      body: FutureBuilder<List<Booking>>(
+          future: controller.getBookingdata(),
+          builder: (context, AsyncSnapshot<List<Booking>> snapshot) {
+            if (snapshot.hasError) {
+              return CircularProgressIndicator(
+                color: greenColor,
+              );
+            } else {
+              return screenHeight < 900 || screenWidth < 450
+                  ? ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        var bookingData = snapshot.data![index];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 20),
+
+                            // For smaller screens, use list view
+
+                            Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Card(
                                 elevation: 5,
@@ -72,7 +73,7 @@ class BookingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 12),
                                       Text(
-                                        'Customer: ${booking.customerName}',
+                                        'Customer: ${bookingData.oName}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
@@ -82,7 +83,7 @@ class BookingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Status: ${booking.status}',
+                                        'Status: ${bookingData.orderStatus}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
@@ -92,7 +93,7 @@ class BookingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Phone: ${booking.phone}',
+                                        'Phone: ${bookingData.oPhone}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
@@ -102,7 +103,7 @@ class BookingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Email: ${booking.email}',
+                                        'Email: ${bookingData.oEmail}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
@@ -112,7 +113,7 @@ class BookingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Price: \$${booking.price.toStringAsFixed(2)}',
+                                        'Price: \$${bookingData.oSubtotal}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
@@ -122,7 +123,7 @@ class BookingScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Date & Time: ${controller.formatDate(booking.appointmentAndDate)}',
+                                        'Date & Time: ${bookingData.bookingDate}${bookingData.bookingTime}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
@@ -134,15 +135,15 @@ class BookingScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            );
-                          },
+                            )
+                          ],
                         );
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
+                      })
+                  : Center(
+                      child: Text('No Data'),
+                    );
+            }
+          }),
     );
   }
 }
