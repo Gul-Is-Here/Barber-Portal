@@ -22,8 +22,8 @@ class BookingController extends GetxController {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
   }
 
-  // GET API Method for Admin And Stylist Login
 
+  // GET API Method for Admin And Stylist Login
   Future<List<Booking>> getBookingdata() async {
     http.Response response = await http.get(Uri.parse(
         'https://salons.sgsolutionsgroup.com/sassapi/get_booking/$id'));
