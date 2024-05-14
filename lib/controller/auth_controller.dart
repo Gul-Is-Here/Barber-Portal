@@ -89,6 +89,9 @@ class AuthController extends GetxController {
     if (storedId != null) {
       // User is logged in, navigate to home screen
       Get.offAll(() => Home());
+    } else if (storedId == "0") {
+      // Check if storedId is "0" instead of 0
+      Get.off(() => AnimatedLoginScreen());
     } else {
       // User is not logged in, navigate to login screen
       Get.off(() => AnimatedLoginScreen());
@@ -100,12 +103,11 @@ class AuthController extends GetxController {
     // Reset user ID in SharedPreferences
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('user_id');
-    await prefs.setInt('user_id', 0);
-    // ignore: unrelated_type_equality_checks
-    if (id == 0) {
-      // Navigate to login screen
-      Get.off(() => AnimatedLoginScreen());
-    }
+    await prefs.clear();
+    // Navigate to login screen
+    print("id : $id");
+
+    Get.offAll(() => AnimatedLoginScreen());
 
     // Show logout confirmation message
     ScaffoldMessenger.of(context).showSnackBar(

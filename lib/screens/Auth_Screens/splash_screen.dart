@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:barber_portal/const/globals.dart';
 import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:barber_portal/screens/Auth_Screens/login_screen.dart';
@@ -38,10 +39,10 @@ class _SplashScreenState extends State<SplashScreen>
       const Duration(seconds: 3),
       // Duration of the splash screen
       () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return AnimatedLoginScreen();
-        })); // Navigate to home screen
+        // Navigate to home screen
+
         controller.isLogged(context);
+        print('id $id');
       },
     );
   }

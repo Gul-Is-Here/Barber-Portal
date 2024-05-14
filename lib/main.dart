@@ -1,10 +1,10 @@
 import 'package:barber_portal/const/color.dart';
+import 'package:barber_portal/screens/Auth_Screens/splash_screen.dart';
 import 'package:barber_portal/screens/Home_Screen/home.dart';
 import 'package:barber_portal/screens/Home_Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:barber_portal/screens/Auth_Screens/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
@@ -106,7 +106,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Home(),
+      home: SplashScreen(),
     );
   }
 }

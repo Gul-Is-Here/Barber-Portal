@@ -1,3 +1,4 @@
+import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:barber_portal/const/color.dart';
@@ -16,8 +17,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AuthController());
     return Scaffold(
-      
         body: SingleChildScrollView(
       child: Column(
         children: [
@@ -59,6 +60,11 @@ class HomeScreen extends StatelessWidget {
           ),
           ScheduleWidget(),
           SwiperWidget(),
+          ElevatedButton(
+              onPressed: () {
+                controller.logout(context);
+              },
+              child: Text('Logout'))
         ],
       ),
     ));
