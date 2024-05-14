@@ -12,10 +12,11 @@ import '../model/user_model.dart';
 import '../screens/Home_Screen/home.dart';
 
 class AuthController extends GetxController {
-  final formkey = GlobalKey<FormState>();
+  RxBool isLoading = false.obs;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  
   // Method to handle user authentication
   Future<bool> userAuthentication(
       String email, String password, BuildContext context) async {
@@ -104,6 +105,9 @@ class AuthController extends GetxController {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('user_id');
     await prefs.clear();
+    emailController.clear();
+    passwordController.clear();
+
     // Navigate to login screen
     Get.offAll(() => AnimatedLoginScreen());
 

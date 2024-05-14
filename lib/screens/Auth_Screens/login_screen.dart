@@ -15,11 +15,12 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
 
   final formKey1 = GlobalKey<FormState>();
   GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    // controller.isLogged(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: screenWidth < 450 || screenHeight < 900
@@ -53,7 +54,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                     child: Column(
                       children: [
                         Form(
-                          key: formKey2, // Use formkey2 here
+                          key: formKey2,
                           child: Column(
                             children: [
                               const SizedBox(height: 150),
@@ -81,9 +82,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                       borderSide: BorderSide(color: greenColor),
                                     ),
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              greenColor), // Add bottom border
+                                      borderSide: BorderSide(color: greenColor),
                                     ),
                                   ),
                                   style: const TextStyle(color: Colors.black),
@@ -96,6 +95,11 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                     horizontal:
                                         MediaQuery.of(context).size.width * .1),
                                 child: TextFormField(
+                                  validator: (value) {
+                                    if (value!.length < 4) {
+                                      return 'Password mustbe 4 character long';
+                                    }
+                                  },
                                   controller: controller.passwordController,
                                   decoration: const InputDecoration(
                                     hintText: 'Password',
@@ -106,9 +110,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                       borderSide: BorderSide(color: greenColor),
                                     ),
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              greenColor), // Add bottom border
+                                      borderSide: BorderSide(color: greenColor),
                                     ),
                                   ),
                                   obscureText: true,
@@ -136,36 +138,49 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                             ],
                           ),
                         ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            bool isAuthenticated =
-                                await controller.userAuthentication(
-                              controller.emailController.text,
-                              controller.passwordController.text,
-                              context,
-                            );
-                            if (isAuthenticated) {
-                              controller.isLogged(context);
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: greenColor,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * .35),
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ),
+                        Obx(
+                          () => controller.isLoading.value
+                              ? CircularProgressIndicator(
+                                  color: greenColor,
+                                )
+                              : ElevatedButton(
+                                  onPressed: () async {
+                                    if (formKey2.currentState!.validate()) {
+                                      controller.isLoading.value = true;
+                                      bool isAuthenticated =
+                                          await controller.userAuthentication(
+                                        controller.emailController.text,
+                                        controller.passwordController.text,
+                                        context,
+                                      );
+                                      if (isAuthenticated) {
+                                        controller.isLogged(context);
+                                      }
+                                      controller.isLoading.value = false;
+                                    }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: greenColor,
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            MediaQuery.of(context).size.width *
+                                                .35),
+                                    child: const Text(
+                                      'Login',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
                         ),
                       ],
                     ),
@@ -202,7 +217,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                     child: Column(
                       children: [
                         Form(
-                          key: formKey1, // Use formkey1 here
+                          key: formKey1,
                           child: Column(
                             children: [
                               const SizedBox(height: 150),
@@ -230,9 +245,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                       borderSide: BorderSide(color: greenColor),
                                     ),
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              greenColor), // Add bottom border
+                                      borderSide: BorderSide(color: greenColor),
                                     ),
                                   ),
                                   style: const TextStyle(color: Colors.black),
@@ -255,9 +268,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                       borderSide: BorderSide(color: greenColor),
                                     ),
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              greenColor), // Add bottom border
+                                      borderSide: BorderSide(color: greenColor),
                                     ),
                                   ),
                                   obscureText: true,
