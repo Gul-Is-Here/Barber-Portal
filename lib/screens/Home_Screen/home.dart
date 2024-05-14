@@ -79,8 +79,7 @@ class Home extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     var size = MediaQuery.of(context).size;
-    print(screenWidth);
-    print(screenHeight);
+
     return SafeArea(
       // this for tablets screens
       child: screenWidth > 450

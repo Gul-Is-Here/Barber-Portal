@@ -1,4 +1,5 @@
 import 'package:barber_portal/const/color.dart';
+import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
 import 'package:barber_portal/screens/Home_Screen/home.dart';
 import 'package:barber_portal/screens/Menu/menu_screen.dart';
@@ -14,6 +15,7 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AuthController());
     return Drawer(
       child: Container(
         color: Colors.white,
@@ -112,7 +114,7 @@ class MyDrawer extends StatelessWidget {
               icon: Icons.logout,
               title: 'Logout',
               onTap: () {
-                // Perform logout action
+                controller.logout(context);
               },
             ),
           ],

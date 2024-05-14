@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:barber_portal/screens/Auth_Screens/login_screen.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+  var controller = Get.put(AuthController());
 
   @override
   void initState() {
@@ -32,19 +35,21 @@ class _SplashScreenState extends State<SplashScreen>
     _animationController.forward();
 
     Timer(
-      const Duration(seconds: 3), // Duration of the splash screen
+      const Duration(seconds: 3),
+      // Duration of the splash screen
       () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return AnimatedLoginScreen();
         })); // Navigate to home screen
+        controller.isLogged(context);
       },
     );
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
     super.dispose();
+    _animationController.dispose();
   }
 
   @override

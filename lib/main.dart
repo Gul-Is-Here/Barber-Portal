@@ -1,8 +1,11 @@
 import 'package:barber_portal/const/color.dart';
+import 'package:barber_portal/screens/Home_Screen/home.dart';
+import 'package:barber_portal/screens/Home_Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:barber_portal/screens/Auth_Screens/splash_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromRGBO(107, 153, 64, 6),
@@ -10,7 +13,11 @@ var kColorScheme = ColorScheme.fromSeed(
 var dColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromRGBO(107, 153, 64, 6),
 );
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferences.getInstance();
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.reload();
   runApp(const MyApp());
 }
 
@@ -99,7 +106,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: SplashScreen(),
+      home: Home(),
     );
   }
 }

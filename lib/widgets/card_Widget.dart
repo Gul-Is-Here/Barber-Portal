@@ -22,8 +22,7 @@ class CustomizedCardWidget extends StatelessWidget {
     // Calculate adaptive width based on screen width
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    print('Width : $screenWidth');
-    print('Height : $screenHeight');
+ 
     final double containerWidth = screenWidth < 450 ? 1500 : screenWidth * 0.40;
     final double containerHeight =
         screenHeight < 800 ? 200 : screenHeight * .300;

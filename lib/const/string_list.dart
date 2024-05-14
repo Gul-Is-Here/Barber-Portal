@@ -14,7 +14,7 @@ final vxSwiperSubtitleList = [
 // final vsSwiperIcon = [brushIcon, menuColorIcon, iconDone];
 
 final vxSwiperText = ['Testimonial', 'Testimonial', 'Testimonial'];
-  final List<Widget> tabOption = const [
+  const List<Widget> tabOption = [
     HomeScreen(),
     MenuScreen(),
     BookingScreen(),
