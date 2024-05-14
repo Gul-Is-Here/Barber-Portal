@@ -1,13 +1,18 @@
 import 'package:barber_portal/const/color.dart';
+import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SidebarPage extends StatelessWidget {
-  SidebarPage({super.key});
+  SidebarPage({super.key, required this.context});
+  BuildContext context;
   late List<CollapsibleItem> _items;
 
   // AssetImage _avatarImg = AssetImage('assets/man.png');
+  var controller = Get.put(AuthController());
   List<CollapsibleItem> get _generateItems {
     return [
       CollapsibleItem(
@@ -41,9 +46,9 @@ class SidebarPage extends StatelessWidget {
       CollapsibleItem(
         text: 'Logout',
         icon: Icons.logout,
-        onPressed: () {},
-        // onHold: () => ScaffoldMessenger.of(context)
-        //     .showSnackBar(SnackBar(content: const Text("Settings"))),
+        onPressed: () {
+          controller.logout(context);
+        },
       ),
     ];
   }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:barber_portal/model/booking_details_model.dart';
 import 'package:get/get.dart';
 
 import '../const/globals.dart';
@@ -36,6 +37,25 @@ class BookingController extends GetxController {
             jsonData.map((json) => Booking.fromJson(json)).toList();
 
         return bookingData;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    // If something went wrong, return an empty list
+    return [];
+  }
+
+  // Booking Details Api Method to Get Booking Data
+  Future<List<BookingDetailsModel>> getBookingDetailsData(String orderId) async{
+    http.Response response= await http.get(Uri.parse('https://salons.sgsolutionsgroup.com/Sassapi/booking_detail/$orderId'));
+    try {
+      if (response.statusCode == 200) {
+        var jsonData = jsonDecode(response.body) as List;
+        print(id);
+        List<BookingDetailsModel> bookingDetailsData =
+            jsonData.map((json) => BookingDetailsModel.fromJson(json)).toList();
+
+        return bookingDetailsData;
       }
     } catch (e) {
       print(e.toString());

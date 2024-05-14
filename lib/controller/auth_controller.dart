@@ -16,7 +16,6 @@ class AuthController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  
   // Method to handle user authentication
   Future<bool> userAuthentication(
       String email, String password, BuildContext context) async {
@@ -89,8 +88,9 @@ class AuthController extends GetxController {
 
     if (storedId != null) {
       // User is logged in, navigate to home screen
+      id = storedId;
       Get.offAll(() => Home());
-    } else if (storedId == "0") {
+    } else if (id == "0") {
       // Check if storedId is "0" instead of 0
       Get.off(() => AnimatedLoginScreen());
     } else {
@@ -104,7 +104,7 @@ class AuthController extends GetxController {
     // Reset user ID in SharedPreferences
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('user_id');
-    await prefs.clear();
+    // await prefs.clear();
     emailController.clear();
     passwordController.clear();
 
