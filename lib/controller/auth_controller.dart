@@ -109,7 +109,7 @@ class AuthController extends GetxController {
 
     // Show logout confirmation message
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Logged out successfully.'),
       ),
     );
