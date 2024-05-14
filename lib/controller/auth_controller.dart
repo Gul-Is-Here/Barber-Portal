@@ -105,8 +105,6 @@ class AuthController extends GetxController {
     await prefs.remove('user_id');
     await prefs.clear();
     // Navigate to login screen
-    print("id : $id");
-
     Get.offAll(() => AnimatedLoginScreen());
 
     // Show logout confirmation message
