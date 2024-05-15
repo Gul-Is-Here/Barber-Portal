@@ -5,24 +5,23 @@ import 'package:get/get.dart';
 
 import '../const/globals.dart';
 import '../model/booking_model.dart';
-import '../model/data.dart';
+
 import 'package:http/http.dart' as http;
 
 class BookingController extends GetxController {
   // Example data, replace with your actual data source
-  RxList bookingData = orderBooking.obs;
+  // RxList bookingData = orderBooking.obs;
 
   // Method to change the status of a booking
-  void changeStatus(int index, BookingStatus newStatus) {
-    bookingData[index].status = newStatus;
-    update(); // Notify listeners that the data has changed
-  }
+  // void changeStatus(int index, BookingStatus newStatus) {
+  //   bookingData[index].status = newStatus;
+  //   update(); // Notify listeners that the data has changed
+  // }
 
   // Method to format date
   String formatDate(DateTime dateTime) {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
   }
-
 
   // GET API Method for Admin And Stylist Login
   Future<List<Booking>> getBookingdata() async {
@@ -45,9 +44,13 @@ class BookingController extends GetxController {
     return [];
   }
 
-  // Booking Details Api Method to Get Booking Data
-  Future<List<BookingDetailsModel>> getBookingDetailsData(String orderId) async{
-    http.Response response= await http.get(Uri.parse('https://salons.sgsolutionsgroup.com/Sassapi/booking_detail/$orderId'));
+
+
+  // Booking Details Api Method to Get Booking Details Data
+  Future<List<BookingDetailsModel>> getBookingDetailsData(
+      String orderId) async {
+    http.Response response = await http.get(Uri.parse(
+        'https://salons.sgsolutionsgroup.com/Sassapi/booking_detail/$orderId'));
     try {
       if (response.statusCode == 200) {
         var jsonData = jsonDecode(response.body) as List;

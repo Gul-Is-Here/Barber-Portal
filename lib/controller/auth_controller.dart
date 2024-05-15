@@ -19,7 +19,7 @@ class AuthController extends GetxController {
   // Method to handle user authentication
   Future<bool> userAuthentication(
       String email, String password, BuildContext context) async {
-    final url = 'https://salons.sgsolutionsgroup.com/sassapi/get_stylist';
+    const url = 'https://salons.sgsolutionsgroup.com/sassapi/get_stylist';
     try {
       final response = await http.post(
         Uri.parse(url),
@@ -40,15 +40,16 @@ class AuthController extends GetxController {
 
             // Store user ID in SharedPreferences
             await _storeUserId(id);
+            print(_storeUserId(id));
 
             // Check if user is logged in and navigate accordingly
-            isLogged(context);
+
             return true;
           }
         }
         // If no matching user is found, show an error message
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Invalid email or password.'),
           ),
         );
@@ -56,7 +57,7 @@ class AuthController extends GetxController {
       } else {
         // Failed to communicate with the authentication endpoint
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Failed to communicate with the server.'),
           ),
         );
@@ -84,7 +85,7 @@ class AuthController extends GetxController {
   Future<void> isLogged(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     final storedId = prefs.getString('user_id'); // Retrieving stored user ID
-    print(storedId);
+    print('storedId =>  $storedId');
 
     if (storedId != null) {
       // User is logged in, navigate to home screen
@@ -92,10 +93,10 @@ class AuthController extends GetxController {
       Get.offAll(() => Home());
     } else if (id == "0") {
       // Check if storedId is "0" instead of 0
-      Get.off(() => AnimatedLoginScreen());
+      Get.offAll(() => AnimatedLoginScreen());
     } else {
       // User is not logged in, navigate to login screen
-      Get.off(() => AnimatedLoginScreen());
+      Get.offAll(() => AnimatedLoginScreen());
     }
   }
 
@@ -104,7 +105,7 @@ class AuthController extends GetxController {
     // Reset user ID in SharedPreferences
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('user_id');
-    // await prefs.clear();
+    await prefs.clear();
     emailController.clear();
     passwordController.clear();
 

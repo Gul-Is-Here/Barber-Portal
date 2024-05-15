@@ -40,9 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
       // Duration of the splash screen
       () {
         // Navigate to home screen
-
         controller.isLogged(context);
-        print('id $id');
       },
     );
   }
@@ -57,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: C,
-      body: Center(
+      body:  Center(
         child: ScaleTransition(
           scale: _animation,
           child: Container(

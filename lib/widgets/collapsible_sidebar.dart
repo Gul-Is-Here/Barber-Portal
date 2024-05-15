@@ -57,7 +57,7 @@ class SidebarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: CollapsibleSidebar(
-        isCollapsed: MediaQuery.of(context).size.width <= 800,
+        isCollapsed: MediaQuery.of(context).size.width <= 900,
         items: _generateItems,
         collapseOnBodyTap: true,
         screenPadding: 12,

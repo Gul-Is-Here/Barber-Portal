@@ -1,6 +1,5 @@
 import 'package:barber_portal/const/color.dart';
 import 'package:barber_portal/model/booking_details_model.dart';
-import 'package:barber_portal/model/data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/booking_controller.dart';
@@ -91,10 +90,12 @@ class BookingDetailScreen extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(80),
                                   child: Container(
+                                    height: 80,
+                                    width: 80,
                                     color: Colors.red,
                                     child: const Icon(
                                       Icons.person,
-                                      size: 20,
+                                      size: 60,
                                     ),
                                   ),
                                 ),
@@ -155,42 +156,48 @@ class BookingDetailScreen extends StatelessWidget {
                                     SizedBox(height: 10),
                                   ],
                                 ),
-                                // Expanded(
-                                //   child: Align(
-                                //     alignment: Alignment.centerRight,
-                                //     child: Column(
-                                //       crossAxisAlignment:
-                                //           CrossAxisAlignment.start,
-                                //       children: [
-                                //         const Text(
-                                //           'Booking 289827891',
-                                //           style: TextStyle(
-                                //             fontSize: 30,
-                                //           ),
-                                //         ),
-                                //         const SizedBox(height: 10),
-                                //         TextButton(
-                                //           onPressed: () {},
-                                //           style: TextButton.styleFrom(
-                                //             shape: RoundedRectangleBorder(
-                                //               side: const BorderSide(
-                                //                   width: 1,
-                                //                   color: darkGreenColor),
-                                //               borderRadius:
-                                //                   BorderRadius.circular(10),
-                                //             ),
-                                //           ),
-                                //           child: const Text(
-                                //             'Complete',
-                                //             style: TextStyle(
-                                //                 color: darkGreenColor),
-                                //           ),
-                                //         ),
-                                //         const Text('NewYork')
-                                //       ],
-                                //     ),
-                                //   ),
-                                // ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          'Booking Id  ${data.orderId}',
+                                          style: const TextStyle(
+                                            fontSize: 30,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        TextButton(
+                                          onPressed: () {},
+                                          style: TextButton.styleFrom(
+                                            shape: RoundedRectangleBorder(
+                                              side: const BorderSide(
+                                                  width: 1,
+                                                  color: darkGreenColor),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                          ),
+                                          child: data.orderStatus == '0'
+                                              ? const Text(
+                                                  'Pending',
+                                                  style: TextStyle(
+                                                      color: darkGreenColor),
+                                                )
+                                              : const Text(
+                                                  'Complete',
+                                                  style: TextStyle(
+                                                      color: darkGreenColor),
+                                                ),
+                                        ),
+                                        Text(data.locationId)
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -199,110 +206,100 @@ class BookingDetailScreen extends StatelessWidget {
                       const SizedBox(height: 20),
 
                       // Customer Information Section
-                      // Container(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: [
-                      //       const Text(
-                      //         "Customer Information",
-                      //         style: TextStyle(
-                      //           fontSize: 20,
-                      //           fontWeight: FontWeight.bold,
-                      //         ),
-                      //       ),
-                      //       const SizedBox(height: 20),
-                      //       Row(
-                      //         children: [
-                      //           ClipRRect(
-                      //             borderRadius: BorderRadius.circular(80),
-                      //             child: Container(
-                      //                 color: Colors.red,
-                      //                 child: const Icon(
-                      //                   Icons.person,
-                      //                   size: 100,
-                      //                 )),
-                      //           ),
-                      //           const SizedBox(width: 10),
-                      //           Column(
-                      //             crossAxisAlignment:
-                      //                 CrossAxisAlignment.start,
-                      //             children: [
-                      //               Text(
-                      //                 'Name  {bookingData[index].customerName}',
-                      //                 style: TextStyle(fontSize: 18),
-                      //               ),
-                      //               const SizedBox(height: 10),
-                      //               Text(
-                      //                 'Phone  {bookingData[index].phone}',
-                      //                 style: TextStyle(fontSize: 18),
-                      //               ),
-                      //               const SizedBox(height: 10),
-                      //               Text(
-                      //                 'Email  {bookingData[index].email}',
-                      //                 style: TextStyle(fontSize: 18),
-                      //               ),
-                      //               const SizedBox(height: 10),
-                      //               Text('Booking Date & Time'),
-                      //             ],
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 20),
+                      Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Customer Information",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(80),
+                                  child: Container(
+                                      color: Colors.red,
+                                      child: const Icon(
+                                        Icons.person,
+                                        size: 100,
+                                      )),
+                                ),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Name  Gul Faraz',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'Phone  +9201010010',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'Email  gulfaraz@gmail.com}',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text('Booking Date & Time'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
 
                       // Title and Price Section
-                      // Container(
-                      //   width: double.infinity,
-                      //   color: Colors.black,
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: const Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: [
-                      //       Text(
-                      //         "#id",
-                      //         style: TextStyle(color: Colors.white),
-                      //       ),
-                      //       Text(
-                      //         'Title',
-                      //         style: TextStyle(color: Colors.white),
-                      //       ),
-                      //       Text(
-                      //         'Price',
-                      //         style: TextStyle(color: Colors.white),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+                      Container(
+                        width: double.infinity,
+                        color: Colors.black,
+                        padding: const EdgeInsets.all(8.0),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "#id",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text(
+                              'Title',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text(
+                              'Price',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
 
                       // ListView to display data
-                      // Expanded(
-                      //   child: ListView.builder(
-                      //     itemCount: controller.bookingData.length,
-                      //     itemBuilder: (context, index) {
-                      //       return Container(
-                      //         child: Row(
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Padding(
-                      //               padding:
-                      //                   EdgeInsets.symmetric(horizontal: 8),
-                      //               child: Text('${index + 1}'),
-                      //             ),
-                      //             Text("Women & Girl Cut & Style"),
-                      //             const Padding(
-                      //               padding: EdgeInsets.only(right: 8),
-                      //               child: Text('\$12'),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8),
+                              child: Text('${index + 1}'),
+                            ),
+                            Text("Women & Girl Cut & Style"),
+                            const Padding(
+                              padding: EdgeInsets.only(right: 8),
+                              child: Text('\$12'),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
