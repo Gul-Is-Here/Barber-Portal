@@ -1,19 +1,14 @@
-import 'dart:math' as math show pi;
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:barber_portal/const/color.dart';
-import 'package:barber_portal/controller/home_controller.dart';
+import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Auth_Screens/login_screen.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
-import 'package:barber_portal/screens/Home_Screen/home_screen.dart';
 import 'package:barber_portal/screens/Menu/menu_screen.dart';
 import 'package:barber_portal/screens/Message_Screen/message_screen.dart';
 import 'package:barber_portal/widgets/drawer.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../const/string_list.dart';
 
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 
@@ -22,7 +17,8 @@ import '../../widgets/AnimationNotch_bottom_widget.dart';
 class Home extends StatelessWidget {
   Home({super.key});
 
-  AssetImage avatarImg = AssetImage('assets/images/logo.png');
+  AssetImage avatarImg = const AssetImage('assets/images/logo.png');
+  var controller=Get.put(AuthController());
   List<CollapsibleItem> get _generateItems {
     // Define your selected color here
     return [
@@ -40,7 +36,7 @@ class Home extends StatelessWidget {
         text: 'Menu',
         icon: Icons.menu,
         onPressed: () {
-          Get.to(() => MenuScreen());
+          Get.to(() => const MenuScreen());
         },
       ),
       CollapsibleItem(
@@ -54,14 +50,14 @@ class Home extends StatelessWidget {
         text: 'Booking',
         icon: Icons.book_online_rounded,
         onPressed: () {
-          Get.to(() => BookingScreen());
+          Get.to(() => const BookingScreen());
         },
       ),
       CollapsibleItem(
         text: 'Messages',
         icon: Icons.messenger_outline_outlined,
         onPressed: () {
-          Get.to(() => MessageScreen());
+          Get.to(() => const MessageScreen());
         },
       ),
       CollapsibleItem(
@@ -73,9 +69,9 @@ class Home extends StatelessWidget {
       ),
       CollapsibleItem(
         text: 'Logout',
-        icon: Icons.read_more_outlined,
+        icon: Icons.logout,
         onPressed: () {
-          Get.offAll(() => AnimatedLoginScreen());
+          controller.logout();
         },
       ),
     ];
@@ -90,7 +86,7 @@ class Home extends StatelessWidget {
 
     return SafeArea(
       // this for tablets screens
-      child: screenWidth > 450
+      child: screenWidth > 450 || screenHeight > 900
           ? Scaffold(
               body: CollapsibleSidebar(
                 badgeBackgroundColor: Colors.white,
@@ -105,7 +101,7 @@ class Home extends StatelessWidget {
                 screenPadding: 12,
                 unselectedIconColor: greenColor,
                 unselectedTextColor: greenColor,
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 avatarImg: avatarImg,
                 toggleTitle: 'Colapse',
                 showToggleButton: true,

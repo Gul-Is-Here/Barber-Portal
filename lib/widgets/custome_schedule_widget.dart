@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:barber_portal/const/color.dart';
 
 class ScheduleWidget extends StatelessWidget {
-  const ScheduleWidget({Key? key});
+  const ScheduleWidget({super.key,});
 
   @override
   Widget build(BuildContext context) {

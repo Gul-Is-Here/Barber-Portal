@@ -4,12 +4,13 @@ import 'package:barber_portal/screens/Booking_Screen/booking_detail_screen.dart'
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../const/color.dart';
 
 class BookingScreen extends StatelessWidget {
-  const BookingScreen({Key? key});
+  const BookingScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,10 @@ class BookingScreen extends StatelessWidget {
                         return GestureDetector(
                           onTap: () {
                             Get.to(() => BookingDetailScreen(
-                                  bookingOrderId: snapshot.data![index].orderId,
-                                ));
+                                bookingOrderId: snapshot.data![index].orderId,
+                                sPhone: snapshot.data![index].oPhone,
+                                sEmail: snapshot.data![index].oEmail,
+                                sName: snapshot.data![index].oName));
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +80,7 @@ class BookingScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 12),
+                                        const SizedBox(height: 12),
                                         Text(
                                           'Customer: ${bookingData.oName}',
                                           style: TextStyle(
@@ -87,7 +90,7 @@ class BookingScreen extends StatelessWidget {
                                                 GoogleFonts.lato().toString(),
                                           ),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Text(
                                           'Status: ${bookingData.orderStatus}',
                                           style: TextStyle(
@@ -97,7 +100,7 @@ class BookingScreen extends StatelessWidget {
                                                 GoogleFonts.lato().toString(),
                                           ),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Text(
                                           'Phone: ${bookingData.oPhone}',
                                           style: TextStyle(
@@ -107,7 +110,7 @@ class BookingScreen extends StatelessWidget {
                                                 GoogleFonts.lato().toString(),
                                           ),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Text(
                                           'Email: ${bookingData.oEmail}',
                                           style: TextStyle(
@@ -117,7 +120,7 @@ class BookingScreen extends StatelessWidget {
                                                 GoogleFonts.lato().toString(),
                                           ),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Text(
                                           'Price: \$${bookingData.oSubtotal}',
                                           style: TextStyle(
@@ -127,7 +130,7 @@ class BookingScreen extends StatelessWidget {
                                                 GoogleFonts.lato().toString(),
                                           ),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Text(
                                           'Date & Time: ${controller.formatDate(bookingData.bookingDate)} : ${bookingData.bookingTime} ',
                                           style: TextStyle(
@@ -147,23 +150,97 @@ class BookingScreen extends StatelessWidget {
                         );
                       })
                   : SafeArea(
-                      child: Theme(
-                        data: Theme.of(context).copyWith(
-                          dataTableTheme: DataTableThemeData(
-                            dataRowColor: MaterialStateColor.resolveWith(
-                                (states) =>
-                                    Colors.white), // Change the row color
-                            headingRowColor: MaterialStateColor.resolveWith(
-                                (states) =>
-                                    darkBlueColor), // Change the heading row color
-                          ),
-                        ),
-                        child: SingleChildScrollView(
-                          child: PaginatedDataTable(
-                            columns: [
-                              DataColumn(
-                                label: Text(
-                                  'Order',
+                      child: SingleChildScrollView(
+                        child: PaginatedDataTable(
+                          columns: [
+                            DataColumn(
+                              label: Text(
+                                'Order',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Status',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Customer',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Phone',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Email',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Appointment Date & Time',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Price',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        GoogleFonts.cormorant().fontFamily,
+                                    fontSize: 20,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Align(
+                                child: Text(
+                                  'Action',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily:
@@ -173,103 +250,17 @@ class BookingScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              DataColumn(
-                                label: Text(
-                                  'Status',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily:
-                                          GoogleFonts.cormorant().fontFamily,
-                                      fontSize: 20,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              DataColumn(
-                                label: Text(
-                                  'Customer',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily:
-                                          GoogleFonts.cormorant().fontFamily,
-                                      fontSize: 20,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              DataColumn(
-                                label: Text(
-                                  'Phone',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily:
-                                          GoogleFonts.cormorant().fontFamily,
-                                      fontSize: 20,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              DataColumn(
-                                label: Text(
-                                  'Email',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily:
-                                          GoogleFonts.cormorant().fontFamily,
-                                      fontSize: 20,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              DataColumn(
-                                label: Text(
-                                  'Appointment Date & Time',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily:
-                                          GoogleFonts.cormorant().fontFamily,
-                                      fontSize: 20,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              DataColumn(
-                                label: Text(
-                                  'Price',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily:
-                                          GoogleFonts.cormorant().fontFamily,
-                                      fontSize: 20,
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              DataColumn(
-                                label: Align(
-                                  child: Text(
-                                    'Action',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily:
-                                            GoogleFonts.cormorant().fontFamily,
-                                        fontSize: 20,
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              )
-                            ],
-                            source: _BookingDataSource(snapshot.data!),
-                            dataRowHeight: 60,
-                            columnSpacing: 20,
-                            horizontalMargin: 40,
-                            showFirstLastButtons: true,
-                            rowsPerPage: 10,
-                            sortAscending: true,
-                            arrowHeadColor: darkBlueColor,
-                            showEmptyRows: false,
-                          ),
+                            )
+                          ],
+                          source: _BookingDataSource(snapshot.data!),
+                          dataRowHeight: 60,
+                          columnSpacing: 20,
+                          horizontalMargin: 40,
+                          showFirstLastButtons: true,
+                          rowsPerPage: 10,
+                          sortAscending: true,
+                          arrowHeadColor: darkBlueColor,
+                          showEmptyRows: false,
                         ),
                       ),
                     );
@@ -293,7 +284,7 @@ class _BookingDataSource extends DataTableSource {
       DataCell(Text(booking.orderStatus)),
       DataCell(Text(booking.oName)),
       DataCell(Text(booking.oPhone)),
-      DataCell(Text('${booking.oEmail}')),
+      DataCell(Text(booking.oEmail)),
       DataCell(Text(
           '${controller.formatDate(booking.bookingDate)} : ${booking.bookingTime}')),
       DataCell(Text('\$${booking.oSubtotal}')),
@@ -301,9 +292,13 @@ class _BookingDataSource extends DataTableSource {
         children: [
           ElevatedButton(
               onPressed: () {
-                Get.to(() => BookingDetailScreen(bookingOrderId: booking.orderId));
+                Get.to(() => BookingDetailScreen(
+                    bookingOrderId: booking.orderId,
+                    sPhone: booking.oPhone,
+                    sEmail: booking.oEmail,
+                    sName: booking.oName));
               },
-              child: Text('View')),
+              child: const Text('View')),
         ],
       )),
     ]);

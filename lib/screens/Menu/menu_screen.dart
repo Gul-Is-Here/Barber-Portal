@@ -27,7 +27,7 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
           heightFactor:
               0.9, // Adjust this factor as needed to cover the desired portion of the screen
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -63,7 +63,7 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
                                 ))
                             .toList(),
                       )),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     'Subcategory',
                     style: Theme.of(context).textTheme.titleLarge,
@@ -83,7 +83,7 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
                         value: controller.selectedSubcategory.value.isEmpty
                             ? null
                             : controller.selectedSubcategory.value.string,
-                        hint: Text('Select Subcategory'),
+                        hint: const Text('Select Subcategory'),
                         onChanged: (String? newValue) {
                           if (newValue != null) {
                             controller.setSelectedSubcategory(newValue);
@@ -136,12 +136,12 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
                           'Please enter a price between 1 and 10 dollars',
                           backgroundColor: Colors.red,
                           colorText: Colors.white,
-                          animationDuration: Duration(milliseconds: 500),
-                          duration: Duration(seconds: 3),
+                          animationDuration: const Duration(milliseconds: 500),
+                          duration: const Duration(seconds: 3),
                           snackPosition: SnackPosition.BOTTOM,
                           borderRadius: 10,
-                          margin: EdgeInsets.all(10),
-                          padding: EdgeInsets.all(15),
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(15),
                           snackStyle: SnackStyle.GROUNDED,
                           isDismissible: true,
                           forwardAnimationCurve: Curves.easeOutBack,
@@ -216,11 +216,11 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
                             });
                           },
                         ),
-                        duration: Duration(seconds: 2),
+                        duration: const Duration(seconds: 2),
                         animation: CurvedAnimation(
                           parent: AnimationController(
                             vsync: this,
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                           ),
                           curve: Curves.easeInOut,
                         ),
@@ -233,17 +233,17 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
                   background: Container(
                     color: Colors.red,
                     alignment: Alignment.centerRight,
-                    padding: EdgeInsets.only(right: 20.0),
-                    child: Icon(Icons.delete, size: 40, color: Colors.white),
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: const Icon(Icons.delete, size: 40, color: Colors.white),
                   ),
                   child: Card(
                     elevation: 4,
-                    margin: EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [

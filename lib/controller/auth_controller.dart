@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:barber_portal/screens/Auth_Screens/login_screen.dart';
-import 'package:barber_portal/screens/Home_Screen/home_screen.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,7 +42,8 @@ class AuthController extends GetxController {
             print(_storeUserId(id));
 
             // Check if user is logged in and navigate accordingly
-
+            emailController.clear();
+            passwordController.clear();
             return true;
           }
         }
@@ -67,7 +67,7 @@ class AuthController extends GetxController {
       // Handle error
       print('Error: $error');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('An error occurred. Please try again later.'),
         ),
       );
@@ -93,30 +93,35 @@ class AuthController extends GetxController {
       Get.offAll(() => Home());
     } else if (id == "0") {
       // Check if storedId is "0" instead of 0
-      Get.offAll(() => AnimatedLoginScreen());
+      Get.offAll(() => const AnimatedLoginScreen());
     } else {
       // User is not logged in, navigate to login screen
-      Get.offAll(() => AnimatedLoginScreen());
+      Get.offAll(() => const AnimatedLoginScreen());
     }
   }
 
   // Method to handle user logout
-  Future<void> logout(BuildContext context) async {
+  Future<void> logout() async {
     // Reset user ID in SharedPreferences
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('user_id');
     await prefs.clear();
-    emailController.clear();
-    passwordController.clear();
-
     // Navigate to login screen
-    Get.offAll(() => AnimatedLoginScreen());
+    Get.offAll(() => const AnimatedLoginScreen());
 
-    // Show logout confirmation message
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Logged out successfully.'),
-      ),
+    Get.snackbar(
+      'Logout',
+      'Logout Successfully',
+      snackPosition: SnackPosition.BOTTOM, // Show SnackBar at the bottom
+      duration: Duration(seconds: 3), // Optional
+      backgroundColor: Color.fromARGB(255, 76, 104, 117), // Optional
+      colorText: Colors.white, // Optional
+      borderRadius: 10, // Optional
+      margin: EdgeInsets.all(10), // Optional
+      padding: EdgeInsets.all(20), // Optional
+      dismissDirection: DismissDirection.horizontal, // Optional
+      forwardAnimationCurve: Curves.easeOut, // Optional
+      reverseAnimationCurve: Curves.easeIn, // Optional
     );
   }
 }

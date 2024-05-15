@@ -1,8 +1,10 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:barber_portal/const/color.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +60,7 @@ class ResetPasswordScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                           borderSide: const BorderSide(color: greenColor),
                         ),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: greenColor),
                         ),
                       ),

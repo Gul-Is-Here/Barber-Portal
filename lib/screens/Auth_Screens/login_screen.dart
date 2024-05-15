@@ -3,9 +3,10 @@ import 'package:barber_portal/screens/Auth_Screens/password_rest_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../const/color.dart';
-import '../Home_Screen/home_screen.dart';
 
 class AnimatedLoginScreen extends StatefulWidget {
+  const AnimatedLoginScreen({super.key});
+
   @override
   State<AnimatedLoginScreen> createState() => _AnimatedLoginScreenState();
 }
@@ -99,6 +100,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                     if (value!.length < 4) {
                                       return 'Password mustbe 4 character long';
                                     }
+                                    return null;
                                   },
                                   controller: controller.passwordController,
                                   decoration: const InputDecoration(
@@ -122,7 +124,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          ResetPasswordScreen(),
+                                          const ResetPasswordScreen(),
                                     ),
                                   );
                                 },
@@ -140,7 +142,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                         ),
                         Obx(
                           () => controller.isLoading.value
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                                   color: greenColor,
                                 )
                               : ElevatedButton(
@@ -263,6 +265,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                     if (value!.length < 4) {
                                       return 'Password mustbe 4 character long';
                                     }
+                                    return null;
                                   },
                                   controller: controller.passwordController,
                                   decoration: const InputDecoration(
@@ -286,7 +289,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          ResetPasswordScreen(),
+                                          const ResetPasswordScreen(),
                                     ),
                                   );
                                 },
@@ -304,7 +307,7 @@ class _AnimatedLoginScreenState extends State<AnimatedLoginScreen> {
                         ),
                         Obx(
                           () => controller.isLoading.value
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                                   color: greenColor,
                                 )
                               : ElevatedButton(

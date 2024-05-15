@@ -1,7 +1,6 @@
 import 'package:barber_portal/const/color.dart';
 import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
-import 'package:barber_portal/screens/Home_Screen/home.dart';
 import 'package:barber_portal/screens/Menu/menu_screen.dart';
 import 'package:barber_portal/screens/Message_Screen/message_screen.dart';
 import 'package:barber_portal/widgets/custome_drawer_widget.dart';
@@ -11,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class MyDrawer extends StatelessWidget {
             20.heightBox,
             Container(
               height: 75,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 // borderRadius: BorderRadius.circular(10),
                 color: greenColor,
               ),
@@ -63,7 +62,7 @@ class MyDrawer extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       )
                     ],
@@ -83,21 +82,21 @@ class MyDrawer extends StatelessWidget {
               icon: Icons.menu,
               title: 'Menu',
               onTap: () {
-                Get..off(() => MenuScreen(), curve: Curves.bounceOut);
+                Get.off(() => const MenuScreen(), curve: Curves.bounceOut);
               },
             ),
             CustomeDrawerWidget(
               icon: Icons.book_online,
               title: 'Bookings',
               onTap: () {
-                Get.off(() => BookingScreen(), curve: Curves.easeInCirc);
+                Get.off(() => const BookingScreen(), curve: Curves.easeInCirc);
               },
             ),
             CustomeDrawerWidget(
               icon: Icons.message,
               title: 'Messages',
               onTap: () {
-                Get.to(() => MessageScreen(), curve: Curves.bounceOut);
+                Get.to(() => const MessageScreen(), curve: Curves.bounceOut);
               },
             ),
             CustomeDrawerWidget(
@@ -114,7 +113,7 @@ class MyDrawer extends StatelessWidget {
               icon: Icons.logout,
               title: 'Logout',
               onTap: () {
-                controller.logout(context);
+                controller.logout();
               },
             ),
           ],

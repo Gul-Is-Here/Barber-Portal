@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 CustomizedCardWidget(
                     onTap: () {
-                      Get.to(() => BookingScreen());
+                      Get.to(() => const BookingScreen());
                     },
                     icon: Icons.book,
                     num: 5,
@@ -58,13 +58,13 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          ScheduleWidget(),
-          SwiperWidget(),
+          const ScheduleWidget(),
+          const SwiperWidget(),
           ElevatedButton(
               onPressed: () {
-                controller.logout(context);
+                controller.logout();
               },
-              child: Text('Logout'))
+              child: const Text('Logout'))
         ],
       ),
     ));

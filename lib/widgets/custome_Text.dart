@@ -15,7 +15,7 @@ class CustomeTextWidget extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Text(
               'Hi,  $name',
-              style: TextStyle(color: darkBlueColor, fontSize: 18),
+              style: const TextStyle(color: darkBlueColor, fontSize: 18),
             ),
           ),
         ),

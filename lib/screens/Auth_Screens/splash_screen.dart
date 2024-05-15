@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'package:barber_portal/const/globals.dart';
 import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:barber_portal/screens/Auth_Screens/login_screen.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1500),
     );
 
     _animation = Tween<double>(

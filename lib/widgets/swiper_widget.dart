@@ -2,7 +2,6 @@ import 'package:barber_portal/widgets/swiper_custome_text.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../const/string_list.dart';
 
 class SwiperWidget extends StatelessWidget {
   const SwiperWidget({super.key});
@@ -20,7 +19,7 @@ class SwiperWidget extends StatelessWidget {
             itemCount: 3,
             itemBuilder: (context, index) {
               // Accessing color based on index from controller
-              return Card(
+              return const Card(
                 child: Stack(
                   children: [
                     Positioned(
@@ -35,7 +34,7 @@ class SwiperWidget extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.only(top: 50, left: 20),
+                        padding: EdgeInsets.only(top: 50, left: 20),
                         child: Column(
                           children: [
                             Row(
@@ -63,7 +62,7 @@ class SwiperWidget extends StatelessWidget {
             itemCount: 3,
             itemBuilder: (context, index) {
               // Accessing color based on index from controller
-              return Card(
+              return const Card(
                 child: Stack(
                   children: [
                     Positioned(
@@ -78,7 +77,7 @@ class SwiperWidget extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.only(top: 50, left: 20),
+                        padding: EdgeInsets.only(top: 50, left: 20),
                         child: Column(
                           children: [
                             Row(

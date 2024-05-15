@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../const/color.dart';
 
 class CustomeDrawerWidget extends StatelessWidget {
-  CustomeDrawerWidget({
-    Key? key,
+  const CustomeDrawerWidget({
+    super.key,
     required this.icon,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final IconData icon;
   final String title;
@@ -52,7 +52,7 @@ class CustomeDrawerWidget extends StatelessWidget {
               ),
               IconButton(
                   onPressed: onTap,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.forward,
                     color: greenColor,
                   ))

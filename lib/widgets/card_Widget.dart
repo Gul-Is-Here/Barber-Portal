@@ -3,13 +3,13 @@ import 'package:barber_portal/const/color.dart';
 
 class CustomizedCardWidget extends StatelessWidget {
   const CustomizedCardWidget({
-    Key? key,
+    super.key,
     required this.icon,
     required this.onTap,
     required this.title,
     this.num,
     this.color,
-  }) : super(key: key);
+  });
 
   final IconData icon;
   final void Function() onTap;
