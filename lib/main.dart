@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: Colors.white),
         cardTheme: const CardTheme().copyWith(
           color: kColorScheme.primaryContainer,
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          // margin: const EdgeInsets.symmetric(vertical: 8, horizontal: ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
