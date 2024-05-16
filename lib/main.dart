@@ -71,6 +71,7 @@ class MyApp extends StatelessWidget {
         cardTheme: const CardTheme().copyWith(
           color: kColorScheme.primaryContainer,
           // margin: const EdgeInsets.symmetric(vertical: 8, horizontal: ),
+
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme().copyWith(
           bodyLarge: GoogleFonts.poppins(
               fontSize: 15,
+              
               color: kColorScheme.onPrimaryContainer,
               fontWeight: FontWeight.bold),
           bodyMedium: GoogleFonts.lato(

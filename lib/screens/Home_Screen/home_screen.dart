@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(AuthController());
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
@@ -60,11 +59,6 @@ class HomeScreen extends StatelessWidget {
           ),
           const ScheduleWidget(),
           const SwiperWidget(),
-          ElevatedButton(
-              onPressed: () {
-                controller.logout();
-              },
-              child: const Text('Logout'))
         ],
       ),
     ));
