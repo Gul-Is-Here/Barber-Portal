@@ -28,41 +28,40 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Barber Portal',
       darkTheme: ThemeData.light().copyWith(
-          appBarTheme: AppBarTheme(
-              backgroundColor: dColorScheme.onPrimaryContainer,
-              foregroundColor: Colors.white),
-          cardTheme: const CardTheme().copyWith(
-            color: dColorScheme.primaryContainer,
-            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-                foregroundColor: dColorScheme.onPrimaryContainer,
-                backgroundColor: dColorScheme.primaryContainer),
-          ),
-          textTheme: const TextTheme().copyWith(
-              bodyLarge: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: dColorScheme.primaryContainer,
-                  fontWeight: FontWeight.bold),
-              bodyMedium: GoogleFonts.lato(
-                  fontSize: 14,
-                  color: dColorScheme.onSecondaryContainer,
-                  fontWeight: FontWeight.bold),
-              bodySmall: GoogleFonts.lato(
-                  fontSize: 12,
-                  color: dColorScheme.primaryContainer,
-                  fontWeight: FontWeight.bold),
-              titleMedium: GoogleFonts.lato(
-                  fontSize: 12,
-                  color: dColorScheme.primaryContainer,
-                  fontWeight: FontWeight.bold),
-              titleLarge: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
-              titleSmall:
-                  GoogleFonts.lato(fontSize: 14, color: darkBlueColor))),
+        appBarTheme: AppBarTheme(
+            backgroundColor: dColorScheme.onPrimaryContainer,
+            foregroundColor: Colors.white),
+        cardTheme: const CardTheme().copyWith(
+          color: dColorScheme.primaryContainer,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              foregroundColor: dColorScheme.onPrimaryContainer,
+              backgroundColor: dColorScheme.primaryContainer),
+        ),
+        textTheme: const TextTheme().copyWith(
+          bodyLarge: GoogleFonts.poppins(
+              fontSize: 16,
+              color: dColorScheme.primaryContainer,
+              fontWeight: FontWeight.bold),
+          bodyMedium: GoogleFonts.lato(
+              fontSize: 14,
+              color: dColorScheme.onSecondaryContainer,
+              fontWeight: FontWeight.bold),
+          bodySmall: GoogleFonts.lato(
+              fontSize: 12,
+              color: dColorScheme.primaryContainer,
+              fontWeight: FontWeight.bold),
+          titleMedium: GoogleFonts.lato(
+              fontSize: 12,
+              color: dColorScheme.primaryContainer,
+              fontWeight: FontWeight.bold),
+          titleLarge: GoogleFonts.poppins(
+              fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
+          titleSmall: GoogleFonts.lato(fontSize: 14, color: darkBlueColor),
+        ),
+      ),
       theme: ThemeData().copyWith(
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(fontSize: 18),
