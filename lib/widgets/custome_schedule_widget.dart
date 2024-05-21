@@ -10,7 +10,7 @@ class ScheduleWidget extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final double cardWidth = screenWidth > 300 ? 250 : screenWidth * 0.8;
     final double cardHeight = screenHeight > 700 ? 200 : screenHeight * 0.5;
-    final double iconSize = screenHeight < 600 ? 100 : screenWidth * 0.10;
+    // final double iconSize = screenHeight < 600 ? 100 : screenWidth * 0.10;
 
     return SizedBox(
       width: cardWidth,

@@ -1,4 +1,3 @@
-import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:barber_portal/const/color.dart';
@@ -7,9 +6,6 @@ import 'package:barber_portal/widgets/custome_Text.dart';
 import 'package:barber_portal/widgets/swiper_widget.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../Menu/add_services_screen.dart';
-
 import '../../widgets/custome_schedule_widget.dart';
 import '../Menu/menu_screen.dart';
 

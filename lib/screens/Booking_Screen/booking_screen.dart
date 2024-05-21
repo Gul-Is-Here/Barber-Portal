@@ -16,7 +16,7 @@ class BookingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(BookingController());
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: FutureBuilder<List<Booking>>(

@@ -2,7 +2,6 @@ import 'package:barber_portal/screens/Home_Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/Booking_Screen/booking_screen.dart';
-import '../screens/Menu/add_services_screen.dart';
 import '../screens/Menu/menu_screen.dart';
 import '../screens/Message_Screen/message_screen.dart';
 

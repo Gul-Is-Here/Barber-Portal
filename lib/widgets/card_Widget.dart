@@ -23,9 +23,9 @@ class CustomizedCardWidget extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    final double containerWidth = screenWidth < 450 ? 1500 : screenWidth * 0.40;
-    final double containerHeight =
-        screenHeight < 800 ? 200 : screenHeight * .300;
+    // final double containerWidth = screenWidth < 450 ? 1500 : screenWidth * 0.40;
+    // final double containerHeight =
+    //     screenHeight < 800 ? 200 : screenHeight * .300;
 
     return GestureDetector(
       onTap: onTap,

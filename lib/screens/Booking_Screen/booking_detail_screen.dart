@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../controller/booking_controller.dart';
 
+// ignore: must_be_immutable
 class BookingDetailScreen extends StatelessWidget {
   String bookingOrderId;
   final String sPhone;
@@ -322,23 +323,21 @@ class BookingDetailScreen extends StatelessWidget {
                               ),
 
                               // ListView to display data
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8),
-                                      child: Text('${index + 1}'),
-                                    ),
-                                    const Text("Women & Girl Cut & Style"),
-                                    const Padding(
-                                      padding: EdgeInsets.only(right: 8),
-                                      child: Text('\$12'),
-                                    ),
-                                  ],
-                                ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    child: Text('${index + 1}'),
+                                  ),
+                                  const Text("Women & Girl Cut & Style"),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 8),
+                                    child: Text('\$12'),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
