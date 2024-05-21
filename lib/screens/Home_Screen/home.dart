@@ -2,7 +2,7 @@ import 'package:barber_portal/const/color.dart';
 import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Auth_Screens/login_screen.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
-import 'package:barber_portal/screens/Menu/menu_screen.dart';
+import 'package:barber_portal/screens/Menu/add_services_screen.dart';
 import 'package:barber_portal/screens/Message_Screen/message_screen.dart';
 import 'package:barber_portal/widgets/drawer.dart';
 
@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 
 import '../../widgets/AnimationNotch_bottom_widget.dart';
+import '../Menu/menu_screen.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -36,7 +37,7 @@ class Home extends StatelessWidget {
         text: 'Menu',
         icon: Icons.menu,
         onPressed: () {
-          Get.to(() => const MenuScreen());
+          Get.to(() =>  MenuScreen());
         },
       ),
       CollapsibleItem(

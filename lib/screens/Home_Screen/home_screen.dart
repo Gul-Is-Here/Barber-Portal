@@ -8,9 +8,10 @@ import 'package:barber_portal/widgets/swiper_widget.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../Menu/menu_screen.dart';
+import '../Menu/add_services_screen.dart';
 
 import '../../widgets/custome_schedule_widget.dart';
+import '../Menu/menu_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
