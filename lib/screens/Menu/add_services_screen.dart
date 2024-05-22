@@ -49,6 +49,7 @@ class AddServiceScreen extends StatelessWidget {
                         hint: Text('Select Category'),
                         onChanged: (newValue) {
                           controller.selectedService.value = newValue!;
+                          controller.serId.value = newValue; // Set ser_id
                           controller.selectedSubCategory.value =
                               ''; // Reset subcategory when category changes
                         },
@@ -93,6 +94,7 @@ class AddServiceScreen extends StatelessWidget {
                           hint: Text('Select Subcategory'),
                           onChanged: (newValue) {
                             controller.selectedSubCategory.value = newValue!;
+                            controller.mId.value = newValue; // Set m_id
                           },
                           items: controller.filteredMenu.map((menu) {
                             return DropdownMenuItem<String>(
