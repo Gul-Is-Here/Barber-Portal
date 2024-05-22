@@ -3,75 +3,78 @@ import 'package:barber_portal/controller/auth_controller.dart';
 import 'package:barber_portal/screens/Booking_Screen/booking_screen.dart';
 import 'package:barber_portal/screens/Message_Screen/message_screen.dart';
 import 'package:barber_portal/widgets/drawer.dart';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
-
 import '../../widgets/AnimationNotch_bottom_widget.dart';
 import '../Menu/menu_screen.dart';
+import '../../controller/home_controller.dart';
 
-// ignore: must_be_immutable
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({super.key});
 
-  AssetImage avatarImg = const AssetImage('assets/images/logo.png');
-  var controller=Get.put(AuthController());
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final AssetImage avatarImg = const AssetImage('assets/images/logo.png');
+  var authController = Get.put(AuthController());
+  var homeController = Get.put(HomeController());
+
   List<CollapsibleItem> get _generateItems {
-    // Define your selected color here
     return [
       CollapsibleItem(
         text: 'Dashboard',
         icon: Icons.dashboard_customize_outlined,
         onPressed: () {
-          Get.to(() => Home());
+          if (homeController.isConnected.value) Get.to(() => Home());
         },
         isSelected: true,
-
-        // Pas the selected color
       ),
       CollapsibleItem(
         text: 'Menu',
         icon: Icons.menu,
         onPressed: () {
-          Get.to(() =>  MenuScreen());
+          if (homeController.isConnected.value) Get.to(() => MenuScreen());
         },
       ),
       CollapsibleItem(
         text: 'Schedule',
         icon: Icons.schedule_send_outlined,
         onPressed: () {
-          // Get.to(() => Home());
+          // if (homeController.isConnected.value) Get.to(() => Home());
         },
       ),
       CollapsibleItem(
         text: 'Booking',
         icon: Icons.book_online_rounded,
         onPressed: () {
-          Get.to(() => const BookingScreen());
+          if (homeController.isConnected.value)
+            Get.to(() => const BookingScreen());
         },
       ),
       CollapsibleItem(
         text: 'Messages',
         icon: Icons.messenger_outline_outlined,
         onPressed: () {
-          Get.to(() => const MessageScreen());
+          if (homeController.isConnected.value)
+            Get.to(() => const MessageScreen());
         },
       ),
       CollapsibleItem(
         text: 'Report',
         icon: Icons.read_more_outlined,
         onPressed: () {
-          // Get.to(() => ());
+          // if (homeController.isConnected.value) Get.to(() => ());
         },
       ),
       CollapsibleItem(
         text: 'Logout',
         icon: Icons.logout,
         onPressed: () {
-          controller.logout();
+          if (homeController.isConnected.value) authController.logout();
         },
       ),
     ];
@@ -81,19 +84,16 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-
     var size = MediaQuery.of(context).size;
 
     return SafeArea(
-      // this for tablets screens
       child: screenWidth > 450 || screenHeight > 900
           ? Scaffold(
               body: CollapsibleSidebar(
                 badgeBackgroundColor: Colors.white,
-
                 borderRadius: 20,
                 avatarBackgroundColor: darkBlueColor,
-                isCollapsed: MediaQuery.of(context).size.width <= 800,
+                isCollapsed: screenWidth <= 800,
                 items: _generateItems,
                 collapseOnBodyTap: true,
                 curve: Curves.bounceInOut,
@@ -103,14 +103,10 @@ class Home extends StatelessWidget {
                 unselectedTextColor: greenColor,
                 duration: const Duration(milliseconds: 300),
                 avatarImg: avatarImg,
-                toggleTitle: 'Colapse',
+                toggleTitle: 'Collapse',
                 showToggleButton: true,
                 title: 'John Smith',
                 showTitle: true,
-                // onTitleTap: () {
-                //   ScaffoldMessenger.of(context).showSnackBar(
-                //       SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
-                // },
                 iconSize: 30,
                 selectedIconBox: darkBlueColor,
                 selectedIconColor: Colors.white,
@@ -130,3 +126,10 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+

@@ -147,27 +147,28 @@ class AddServiceScreen extends StatelessWidget {
                 Obx(() {
                   double? price = double.tryParse(controller.userPrice.value);
                   if (price != null && (price < 0 || price > 15)) {
-                    return Text(
+                    return const Text(
                       'Price must be between \$0 and \$15',
                       style: TextStyle(color: Colors.red),
                     );
                   }
                   return Container();
                 }),
-
-                SizedBox(height: 16),
-
+                const SizedBox(height: 16),
                 Center(
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 160, vertical: 10),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor: darkBlueColor,
                             foregroundColor: Colors.white),
-                        onPressed: () {},
-                        child: Text('Save')))
+                        onPressed: () {
+                          final controller = Get.find<ServicesController>();
+                          controller.postSelectedData();
+                        },
+                        child: const Text('Save')))
               ],
             ),
           );

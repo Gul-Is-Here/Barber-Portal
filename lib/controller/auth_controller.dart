@@ -113,7 +113,7 @@ class AuthController extends GetxController {
       'Logout',
       'Logout Successfully',
       snackPosition: SnackPosition.BOTTOM, // Show SnackBar at the bottom
-      duration: Duration(seconds: 3), // Optional
+      duration: const Duration(seconds: 3), // Optional
       backgroundColor: Color.fromARGB(255, 76, 104, 117), // Optional
       colorText: Colors.white, // Optional
       borderRadius: 10, // Optional
