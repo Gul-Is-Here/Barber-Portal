@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:barber_portal/controller/auth_controller.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +16,7 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+
   var controller = Get.put(AuthController());
 
   @override
@@ -34,17 +37,17 @@ class _SplashScreenState extends State<SplashScreen>
     ));
 
     _animationController.forward();
-
+  
     Timer(
       const Duration(seconds: 3),
       // Duration of the splash screen
       () {
-        // Navigate to home screen
         controller.isLogged(context);
       },
     );
   }
 
+  
   @override
   void dispose() {
     super.dispose();
@@ -55,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: C,
-      body:  Center(
+      body: Center(
         child: ScaleTransition(
           scale: _animation,
           child: Container(
