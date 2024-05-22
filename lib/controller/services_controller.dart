@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:barber_portal/const/globals.dart';
 import 'package:barber_portal/model/services_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +14,8 @@ class ServicesController extends GetxController {
   var selectedService = ''.obs;
   var selectedSubCategory = ''.obs;
   var userPrice = ''.obs;
+  var serId = ''.obs;
+  var mId = ''.obs;
 
   @override
   void onInit() {
@@ -43,19 +46,23 @@ class ServicesController extends GetxController {
         .toList();
   }
 
-  // post Method for selected Category, SubCategory and Price
-   Future<void> postSelectedData() async {
+  Future<void> postSelectedData() async {
     try {
       // Construct the data to be posted
       final data = {
-        'service': selectedService.value,
-        'subCategory': selectedSubCategory.value,
-        'price': userPrice.value
+        // 'service': selectedService.value,
+        // 'subCategory': selectedSubCategory.value,
+        'stylist_id': id,
+        'price': userPrice.value,
+        'ser_id': serId.value,
+        'm_id': mId.value
       };
+      print(data);
 
       // Make a POST request
       final response = await http.post(
-        Uri.parse('https://salons.sgsolutionsgroup.com/sassapi/services'), // Replace with your API URL
+        Uri.parse(
+            'https://salons.sgsolutionsgroup.com/sassapi/post_data_json'), // Replace with your API URL
         headers: {
           'Content-Type': 'application/json',
         },
