@@ -4,7 +4,7 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart'; // Import SharedPreferences
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../const/globals.dart';
 import '../model/user_model.dart';
@@ -41,12 +41,13 @@ class AuthController extends GetxController {
             await _storeUserId(id);
             print(_storeUserId(id));
 
-            // Check if user is logged in and navigate accordingly
+            // Clear input fields
             emailController.clear();
             passwordController.clear();
             return true;
           }
         }
+
         // If no matching user is found, show an error message
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -55,6 +56,9 @@ class AuthController extends GetxController {
         );
         return false;
       } else {
+        // Log the response body for debugging
+        print('Server response: ${response.body}');
+
         // Failed to communicate with the authentication endpoint
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -64,8 +68,10 @@ class AuthController extends GetxController {
         return false;
       }
     } catch (error) {
-      // Handle error
+      // Log the error for debugging
       print('Error: $error');
+
+      // Handle error
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('An error occurred. Please try again later.'),
@@ -91,9 +97,6 @@ class AuthController extends GetxController {
       // User is logged in, navigate to home screen
       id = storedId;
       Get.offAll(() => Home());
-    } else if (id == "0") {
-      // Check if storedId is "0" instead of 0
-      Get.offAll(() => const AnimatedLoginScreen());
     } else {
       // User is not logged in, navigate to login screen
       Get.offAll(() => const AnimatedLoginScreen());
