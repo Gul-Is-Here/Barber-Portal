@@ -1,13 +1,16 @@
+import 'dart:async';
 import 'package:barber_portal/const/color.dart';
 import 'package:barber_portal/controller/services_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../const/globals.dart';
 
 class AddServiceScreen extends StatelessWidget {
   AddServiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var isLoading = false.obs; // Define local isLoading variable
     var controller = Get.put(ServicesController());
     return Scaffold(
       appBar: AppBar(
@@ -156,21 +159,71 @@ class AddServiceScreen extends StatelessWidget {
                   }
                   return Container();
                 }),
+
                 const SizedBox(height: 16),
                 Center(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 160, vertical: 10),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: darkBlueColor,
-                            foregroundColor: Colors.white),
-                        onPressed: () {
-                          final controller = Get.find<ServicesController>();
-                          controller.postSelectedData();
-                        },
-                        child: const Text('Save')))
+                  child: Obx(() {
+                    return ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 160,
+                          vertical: 10,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: darkBlueColor,
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: isLoading.value
+                          ? null
+                          : () async {
+                              if (controller.userPrice.value.isEmpty ||
+                                  controller.selectedService.value.isEmpty ||
+                                  controller
+                                      .selectedSubCategory.value.isEmpty) {
+                                Get.snackbar(
+                                  'Error',
+                                  'Please fill all fields',
+                                  snackPosition: SnackPosition.BOTTOM,
+                                );
+                                return;
+                              }
+
+                              isLoading.value = true;
+
+                              await controller.postSelectedData();
+
+                              isLoading.value = false;
+                              controller.refreshData(id);
+
+                              Get.snackbar(
+                                'Success',
+                                'Service added successfully',
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+
+                              // Reset form fields
+                              controller.selectedService.value = '';
+                              controller.selectedSubCategory.value = '';
+                              controller.userPrice.value = '';
+
+                              // Pop the screen
+                              Navigator.pop(context);
+                            },
+                      child: isLoading.value
+                          ? SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : const Text('Save'),
+                    );
+                  }),
+                ),
               ],
             ),
           );

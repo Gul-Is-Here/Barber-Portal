@@ -19,6 +19,14 @@ class BookingController extends GetxController {
   // }
 
   // Method to format date
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    getBookingdata();
+  }
+
   String formatDate(DateTime dateTime) {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
   }
@@ -43,8 +51,6 @@ class BookingController extends GetxController {
     // If something went wrong, return an empty list
     return [];
   }
-
-
 
   // Booking Details Api Method to Get Booking Details Data
   Future<List<BookingDetailsModel>> getBookingDetailsData(
