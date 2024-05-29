@@ -84,7 +84,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    var size = MediaQuery.of(context).size;
 
     return SafeArea(
       child: screenWidth > 450 || screenHeight > 900
@@ -115,21 +114,14 @@ class _HomeState extends State<Home> {
                 textStyle: Theme.of(context).textTheme.titleMedium,
                 titleStyle: Theme.of(context).textTheme.bodyLarge,
                 toggleTitleStyle: Theme.of(context).textTheme.titleLarge,
-                body: animationNotchBottom(size, context),
+                body: animationNotchBottom(),
               ),
             )
           : Scaffold(
               appBar: AppBar(),
               drawer: const MyDrawer(),
-              body: animationNotchBottom(size, context),
+              body: animationNotchBottom(),
             ),
     );
   }
 }
-
-
-
-
-
-
-
