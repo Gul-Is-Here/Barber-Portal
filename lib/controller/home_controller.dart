@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     checkInternet(Get.context!); // Initial check for internet connectivity
-    startStreaming();
+    startStreaming(Get.context!);
   }
 
   void showDialogBoxIos(BuildContext context) {
@@ -50,20 +50,22 @@ class HomeController extends GetxController {
     if (result != ConnectivityResult.none) {
       isConnected.value = true;
       if (isDialogShowing.value) {
+        // ignore: use_build_context_synchronously
         Navigator.of(context).pop(); // Close the dialog
         isDialogShowing.value = false;
       }
     } else {
       isConnected.value = false;
       if (!isDialogShowing.value) {
+        // ignore: use_build_context_synchronously
         showDialogBoxIos(context); // Show the dialog if not already showing
       }
     }
   }
 
-  void startStreaming() {
+  void startStreaming(BuildContext context) {
     subscription = Connectivity().onConnectivityChanged.listen((event) {
-      checkInternet(Get.context!);
+      checkInternet(context);
     });
   }
 
