@@ -32,7 +32,11 @@ class MenuScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show circular progress indicator for up to 10 seconds
-            return buildProgressIndicator(context);
+            return Center(
+              child: CircularProgressIndicator(
+                color: darkBlueColor,
+              ),
+            );
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -59,6 +63,4 @@ class MenuScreen extends StatelessWidget {
       ),
     );
   }
-
- 
 }
