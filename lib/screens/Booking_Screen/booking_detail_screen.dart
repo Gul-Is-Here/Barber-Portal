@@ -1,5 +1,6 @@
 import 'package:barber_portal/const/color.dart';
 import 'package:barber_portal/model/booking_details_model.dart';
+import 'package:barber_portal/widgets/progress_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,11 +36,7 @@ class BookingDetailScreen extends StatelessWidget {
         future: controller.getBookingDetailsData(bookingOrderId),
         builder: (context, AsyncSnapshot<List<BookingDetailsModel>> snapshot) {
           if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: greenColor,
-              ),
-            );
+            return buildProgressIndicator(context);
           } else {
             return screenWidth > 450 || screenHeight > 900
                 ? ListView.builder(
@@ -190,7 +187,7 @@ class BookingDetailScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 20),
-                              
+
                               // Customer Information Section
                               Container(
                                 padding: const EdgeInsets.all(8.0),

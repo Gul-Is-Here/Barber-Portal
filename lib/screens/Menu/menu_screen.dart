@@ -6,8 +6,10 @@ import 'package:barber_portal/screens/Menu/add_services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../widgets/progress_indicator.dart';
+
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key});
+  const MenuScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,8 @@ class MenuScreen extends StatelessWidget {
         stream: menuController.servicesStream,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            // Show circular progress indicator for up to 10 seconds
+            return buildProgressIndicator(context);
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -56,4 +59,6 @@ class MenuScreen extends StatelessWidget {
       ),
     );
   }
+
+ 
 }
